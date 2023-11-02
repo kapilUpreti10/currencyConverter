@@ -13,7 +13,7 @@ function Input({
     selectCurrency = "usd",
     amountDisable = false,
     currencyDisable = false,
-    onFOCUS,
+    ONFOCUS,
     className = "",
 }) {
 
@@ -31,7 +31,7 @@ function Input({
                     type="number"
                     placeholder="Amount"
                     value={amount}
-                    onFocus={onFOCUS}
+                    onFocus={ONFOCUS}
                     disabled={amountDisable}
                     onChange={(e) => onAmountChange((Number(e.target.value)))}
 

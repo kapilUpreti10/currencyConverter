@@ -47,7 +47,7 @@ export default function App() {
                 onAmountChange={(amount) => {
                   setAmount(amount)
                 }}
-                onFOCUS={() => setAmount("")}
+                ONFOCUS={() => setAmount("")}
 
               />
             </div>
