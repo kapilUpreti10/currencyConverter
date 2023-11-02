@@ -22,12 +22,6 @@ export default function App() {
 
 
   }
-  function handleInput() {
-    if (!inputClicked) {
-      setInputClicked(true);
-      setAmount(0);
-    }
-  }
   return (
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
@@ -53,6 +47,7 @@ export default function App() {
                 onAmountChange={(amount) => {
                   setAmount(amount)
                 }}
+                onFOCUS={() => setAmount("")}
 
               />
             </div>

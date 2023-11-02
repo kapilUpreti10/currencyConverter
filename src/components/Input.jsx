@@ -4,6 +4,7 @@ import React from 'react'
 
 
 function Input({
+    // these all are props 
     label,
     amount,
     onAmountChange,
@@ -12,8 +13,10 @@ function Input({
     selectCurrency = "usd",
     amountDisable = false,
     currencyDisable = false,
+    onFOCUS,
     className = "",
 }) {
+
 
 
     return (
@@ -28,8 +31,9 @@ function Input({
                     type="number"
                     placeholder="Amount"
                     value={amount}
+                    onFocus={onFOCUS}
                     disabled={amountDisable}
-                    onChange={(e) => onAmountChange && onAmountChange((Number(e.target.value)))}
+                    onChange={(e) => onAmountChange((Number(e.target.value)))}
 
                 />
             </div>
