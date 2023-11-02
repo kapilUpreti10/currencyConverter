@@ -8,9 +8,9 @@ export default function App() {
   const [from, setFrom] = useState("usd");
   const [to, setTo] = useState("npr");
   const [convertedAmount, setConvertedAmount] = useState(0);
-  const [inputClicked, setInputClicked] = useState(false);
   const currencyInfo = useCurrency(from);
   const options = Object.keys(currencyInfo);
+  // in currencyinfo data returned by custom hook  is contained which is obj of from as custom hook must return something and options is array of keys of currencyInfo
   function swap() {
     setFrom(to);
     setTo(from);
@@ -18,8 +18,8 @@ export default function App() {
     setConvertedAmount(amount);
   }
   function convert() {
-    setConvertedAmount(amount * currencyInfo[to]);
-
+    setConvertedAmount((amount * currencyInfo[to]).toFixed(3));
+    //  here object should be accessed by bracket than .operator as for computed variable we must use bracket notation
 
   }
   return (
@@ -44,8 +44,8 @@ export default function App() {
                 currencyOptions={options}
                 onCurrencyChange={(currency) => setFrom(currency)}
                 selectCurrency={from}
-                onAmountChange={(amount) => {
-                  setAmount(amount)
+                onAmountChange={(amountValue) => {
+                  setAmount(amountValue)
                 }}
                 ONFOCUS={() => setAmount("")}
 
@@ -67,13 +67,13 @@ export default function App() {
                 currencyOptions={options}
                 onCurrencyChange={(currency) => setTo(currency)}
                 selectCurrency={to}
-                amountDisable
+                amountDisable="false"
 
 
               />
             </div>
             <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg"
-              onClick={convert}>
+              onClick={convert} >
               Convert {from} to {to}
             </button>
           </form>

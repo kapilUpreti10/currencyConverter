@@ -11,7 +11,8 @@ function Input({
     onCurrencyChange,
     currencyOptions = [],
     selectCurrency = "usd",
-    amountDisable = false,
+    // yedi userle kei select garena vane by default select garauna so that our app donot crash
+    amountDisable,
     currencyDisable = false,
     ONFOCUS,
     className = "",
@@ -33,8 +34,8 @@ function Input({
                     value={amount}
                     onFocus={ONFOCUS}
                     disabled={amountDisable}
-                    onChange={(e) => onAmountChange((Number(e.target.value)))}
-
+                    onChange={(e) => onAmountChange && onAmountChange((Number(e.target.value)))}
+                // onAmountChange && narakheni hunxa 
                 />
             </div>
             <div className="w-1/2 flex flex-wrap justify-end text-right">
@@ -50,7 +51,7 @@ function Input({
                             return (
                                 <option key={currency} value={currency}>
                                     {currency}
-
+                                    {/* here key is given for optimization as key diyena van react dom le mulitple dom create garirako hunxa as a result of which performance slowdown */}
                                 </option>
                             )
 
@@ -64,3 +65,5 @@ function Input({
 }
 
 export default Input;
+
+//  React, when you map over an array to render a list of components, it's a good practice to provide a unique key prop to each child component. This key serves as a hint to React about the identity of each component in the list, helping React efficiently update the virtual DOM and reconcile changes.
